@@ -1,0 +1,122 @@
+{
+  "H2_gray_social_taboo_vs_safe": {
+    "test": "Mann-Whitney U (one-sided)",
+    "U": 6928.0,
+    "p_value": 2.5521638298975163e-07,
+    "cohens_d": 0.36252738542802043,
+    "safe_mean": 1.09,
+    "gray_mean": 1.82,
+    "significant": "True"
+  },
+  "H2_gray_institutional_vs_safe": {
+    "test": "Mann-Whitney U (one-sided)",
+    "U": 7024.5,
+    "p_value": 7.729240112347464e-08,
+    "cohens_d": 0.38963488835809684,
+    "safe_mean": 1.09,
+    "gray_mean": 1.87,
+    "significant": "True"
+  },
+  "H2_gray_epistemic_vs_safe": {
+    "test": "Mann-Whitney U (one-sided)",
+    "U": 7720.5,
+    "p_value": 2.3981720785530615e-12,
+    "cohens_d": 0.5582881342437003,
+    "safe_mean": 1.09,
+    "gray_mean": 2.12,
+    "significant": "True"
+  },
+  "H1_all_gray_vs_safe": {
+    "test": "Mann-Whitney U (one-sided)",
+    "U": 21673.0,
+    "p_value": 9.29503608133304e-13,
+    "cohens_d": 0.43259194639317283,
+    "significant": "True"
+  },
+  "H3_cross_model": {
+    "pairwise_correlations": [
+      {
+        "model1": "GPT-4.1",
+        "model2": "Claude Sonnet 4.5",
+        "rho": 0.7850232068993077,
+        "p_value": 1.1111546304381808e-21,
+        "n_prompts": 98
+      },
+      {
+        "model1": "GPT-4.1",
+        "model2": "Gemini 2.5 Pro",
+        "rho": 0.5904436564812515,
+        "p_value": 1.009328531807931e-10,
+        "n_prompts": 100
+      },
+      {
+        "model1": "GPT-4.1",
+        "model2": "Llama 3.3 70B",
+        "rho": 0.7985121651038766,
+        "p_value": 2.5087133206346573e-23,
+        "n_prompts": 100
+      },
+      {
+        "model1": "GPT-4.1",
+        "model2": "DeepSeek-R1",
+        "rho": 0.8265411456732507,
+        "p_value": 3.3607300168383853e-26,
+        "n_prompts": 100
+      },
+      {
+        "model1": "Claude Sonnet 4.5",
+        "model2": "Gemini 2.5 Pro",
+        "rho": 0.5584061738574936,
+        "p_value": 2.3078400910853585e-09,
+        "n_prompts": 98
+      },
+      {
+        "model1": "Claude Sonnet 4.5",
+        "model2": "Llama 3.3 70B",
+        "rho": 0.7860004317066794,
+        "p_value": 9.155541457186745e-22,
+        "n_prompts": 98
+      },
+      {
+        "model1": "Claude Sonnet 4.5",
+        "model2": "DeepSeek-R1",
+        "rho": 0.7487406608340437,
+        "p_value": 7.737843467771093e-19,
+        "n_prompts": 98
+      },
+      {
+        "model1": "Gemini 2.5 Pro",
+        "model2": "Llama 3.3 70B",
+        "rho": 0.568185624126961,
+        "p_value": 7.015825868469635e-10,
+        "n_prompts": 100
+      },
+      {
+        "model1": "Gemini 2.5 Pro",
+        "model2": "DeepSeek-R1",
+        "rho": 0.6089342740602998,
+        "p_value": 1.7954670173049045e-11,
+        "n_prompts": 100
+      },
+      {
+        "model1": "Llama 3.3 70B",
+        "model2": "DeepSeek-R1",
+        "rho": 0.7331323275861273,
+        "p_value": 4.2425982825625355e-18,
+        "n_prompts": 100
+      }
+    ],
+    "avg_rho": 0.7003919666329291
+  },
+  "H4_implicit": {
+    "n_non_refused_gray": 299,
+    "n_refused_gray": 1,
+    "hedging_gray_nonrefused": 1.979933110367893,
+    "hedging_safe": 0.38,
+    "disclaimers_gray_nonrefused": 0.8695652173913043
+  },
+  "kruskal_wallis": {
+    "H": 281.95188030203474,
+    "p_value": 8.455550049157287e-60
+  }
+}

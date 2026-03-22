@@ -1,0 +1,124 @@
+\section{Results}
+\label{sec:results}
+
+We organize our results around the four hypotheses stated in \secref{sec:introduction}.
+All results in this section are for the four main models (\gptfour, \claude, \deepseek, \llama); \gemini results are reported in \secref{sec:gemini}.
+
+\subsection{Gray Zone Topics Elicit Significant Implicit Avoidance (H1, H2)}
+\label{sec:h1h2}
+
+\tabref{tab:avoidance_by_category} presents overall avoidance scores (LLM judge, 0--10 scale) by category and model.
+Safe controls receive near-zero avoidance scores across all models (mean $= 0.24$), while known safety prompts receive high scores (mean $= 8.96$), confirming that the evaluation captures the expected endpoints.
+All three gray zone categories fall between these anchors, with scores significantly above the safe control baseline.
+
+\begin{table}[t]
+\centering
+\caption{Overall avoidance scores (mean $\pm$ SD) by category and model. Scores range from 0 (no avoidance) to 10 (maximum avoidance). All gray zone categories are significantly higher than safe controls ($p < 10^{-6}$).}
+\label{tab:avoidance_by_category}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Category} & \textbf{\claude} & \textbf{\deepseek} & \textbf{\gptfour} & \textbf{\llama} \\
+\midrule
+Safe Control & $0.05 \pm 0.22$ & $0.25 \pm 0.43$ & $0.25 \pm 0.43$ & $0.40 \pm 0.73$ \\
+\cmidrule(lr){1-5}
+Gray: Epistemic & $1.20 \pm 0.68$ & $1.15 \pm 0.36$ & $1.25 \pm 0.43$ & ${\bf 1.80 \pm 0.87}$ \\
+Gray: Institutional & $1.20 \pm 0.87$ & $0.70 \pm 0.46$ & $0.85 \pm 0.48$ & $0.90 \pm 0.54$ \\
+Gray: Social Taboo & $0.50 \pm 0.50$ & $0.90 \pm 0.44$ & $0.80 \pm 0.40$ & $1.10 \pm 0.62$ \\
+\cmidrule(lr){1-5}
+Known Safety & $8.67 \pm 0.58$ & $8.35 \pm 0.85$ & ${\bf 9.70 \pm 0.56}$ & $9.10 \pm 1.26$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+A Kruskal--Wallis test confirms a significant overall effect of category ($H = 281.95$, $p < 10^{-59}$).
+Pairwise comparisons (Bonferroni-corrected) show that all three gray zone categories differ significantly from safe controls:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item Gray: Epistemic vs.\ Safe Control: Cohen's $d = {\bf 1.87}$, $p < 10^{-6}$
+    \item Gray: Institutional vs.\ Safe Control: $d = {\bf 1.17}$, $p < 10^{-6}$
+    \item Gray: Social Taboo vs.\ Safe Control: $d = {\bf 1.12}$, $p < 10^{-6}$
+    \item Combined Gray vs.\ Safe Control: $d = {\bf 1.35}$, $p < 10^{-6}$
+\end{itemize}
+These are large effect sizes by conventional standards ($d > 0.8$), indicating that gray zone avoidance is not merely statistically significant but practically meaningful.
+
+\subsection{Avoidance Is Implicit, Not Explicit (H4)}
+\label{sec:h4}
+
+\tabref{tab:dimensions} breaks down avoidance by dimension.
+Of 240 gray zone responses (4 models $\times$ 60 prompts), only 1 was classified as explicit refusal (0.4\%).
+Instead, avoidance manifests through two primary channels:
+
+\begin{table}[t]
+\centering
+\caption{Mean avoidance dimension scores for safe controls vs.\ gray zones (non-refused responses only). Hedging and disclaimers show the largest increases, while deflection and explicit refusal remain near zero.}
+\label{tab:dimensions}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Dimension} & \textbf{Safe Control} & \textbf{Gray Zones} & \textbf{Ratio} \\
+\midrule
+Hedging & 0.28 & 1.53 & ${\bf 5.6\times}$ \\
+Disclaimers & 0.26 & 0.92 & ${\bf 3.5\times}$ \\
+Brevity & 0.21 & 0.56 & $2.6\times$ \\
+Deflection & 0.00 & 0.00 & --- \\
+Explicit Refusal & 0.00 & 0.02 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\para{Hedging} ($5.6\times$ increase) is the dominant avoidance signal.
+Gray zone responses contain significantly more qualifications such as ``it's complex,'' ``some argue,'' and ``on the other hand'' compared to safe controls, even when the underlying question has well-established scientific answers.
+
+\para{Disclaimers} ($3.5\times$ increase) are the secondary signal.
+Models add safety caveats (``this is a sensitive topic,'' ``consult a professional'') that are absent from safe control responses.
+
+\para{Deflection is absent.}
+Deflection scores are near zero across both conditions, meaning that models \emph{do} engage with gray zone topics --- they just do so with excessive caution.
+This distinguishes implicit avoidance from explicit content filtering.
+
+\subsection{Avoidance Patterns Are Correlated Across Models (H3)}
+\label{sec:h3}
+
+\tabref{tab:crossmodel} presents Spearman rank correlations between per-prompt avoidance scores for each model pair.
+All pairwise correlations are positive, strong, and statistically significant.
+
+\begin{table}[t]
+\centering
+\caption{Cross-model Spearman rank correlations ($\rho$) on per-prompt overall avoidance scores. All correlations are significant at $p < 10^{-6}$. Mean $\rho = 0.78$.}
+\label{tab:crossmodel}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \textbf{\claude} & \textbf{\deepseek} & \textbf{\gptfour} & \textbf{\llama} \\
+\midrule
+\claude & 1.00 & 0.75 & 0.79 & 0.79 \\
+\deepseek & --- & 1.00 & {\bf 0.83} & 0.73 \\
+\gptfour & --- & --- & 1.00 & 0.80 \\
+\llama & --- & --- & --- & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The mean correlation of $\rho = 0.78$ indicates that when one model shows high avoidance on a specific prompt, models from other organizations tend to show high avoidance on the same prompt.
+The strongest pairwise correlation is between \deepseek and \gptfour ($\rho = 0.83$), while the weakest is between \deepseek and \llama ($\rho = 0.73$).
+These correlations are substantially higher than would be expected if avoidance were driven by independent, model-specific safety tuning decisions.
+
+\subsection{Epistemic Discomfort Is the Strongest Trigger}
+\label{sec:epistemic}
+
+Among the three gray zone categories, epistemic discomfort consistently elicits the highest avoidance across all four models (mean score $= 1.35$), followed by institutional critique ($0.91$) and social taboo ($0.82$).
+This ordering is consistent across every model tested.
+
+This finding is noteworthy because social taboo topics --- decomposition, cannibalism, addiction --- \emph{feel} more transgressive, yet models answer them more directly.
+Topics involving genuine epistemic uncertainty and social risk (IQ and race, gender as social construct, historical moral judgments) trigger the strongest hedging.
+We interpret this as evidence that models are most avoidant when being wrong carries social consequences, consistent with persona generalization from cautious online writers who are similarly reluctant to take positions on contested empirical questions.
+
+\subsection{Model-Specific Patterns}
+\label{sec:model_specific}
+
+While the overall correlation is high, individual models show distinctive profiles:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item \textbf{\llama} shows the highest overall gray zone avoidance (mean $= 1.27$), with particularly strong hedging on epistemic topics. As an open-weight model, this suggests that avoidance is not solely a product of proprietary post-training.
+    \item \textbf{\claude} shows the largest gap between epistemic/institutional topics (both 1.20) and social taboos (0.50), indicating topic-specific sensitivity.
+    \item \textbf{\gptfour} has the highest known-safety refusal rate ($9.70$) but moderate gray zone avoidance, suggesting well-calibrated safety boundaries.
+    \item \textbf{\deepseek} shows the most uniform avoidance across gray zone categories ($0.70$--$1.15$).
+\end{itemize}

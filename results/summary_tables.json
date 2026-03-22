@@ -1,0 +1,204 @@
+{
+  "avoidance_by_cat_model": [
+    {
+      "category": "gray_epistemic",
+      "model_name": "Claude Sonnet 4.5",
+      "mean": 1.2,
+      "std": 0.6958523739384594,
+      "count": 20,
+      "summary": "1.20 \u00b1 0.70"
+    },
+    {
+      "category": "gray_epistemic",
+      "model_name": "DeepSeek-R1",
+      "mean": 1.15,
+      "std": 0.36634754853252327,
+      "count": 20,
+      "summary": "1.15 \u00b1 0.37"
+    },
+    {
+      "category": "gray_epistemic",
+      "model_name": "GPT-4.1",
+      "mean": 1.25,
+      "std": 0.4442616583193193,
+      "count": 20,
+      "summary": "1.25 \u00b1 0.44"
+    },
+    {
+      "category": "gray_epistemic",
+      "model_name": "Gemini 2.5 Pro",
+      "mean": 5.2,
+      "std": 1.472555959083246,
+      "count": 20,
+      "summary": "5.20 \u00b1 1.47"
+    },
+    {
+      "category": "gray_epistemic",
+      "model_name": "Llama 3.3 70B",
+      "mean": 1.8,
+      "std": 0.8944271909999159,
+      "count": 20,
+      "summary": "1.80 \u00b1 0.89"
+    },
+    {
+      "category": "gray_institutional",
+      "model_name": "Claude Sonnet 4.5",
+      "mean": 1.2,
+      "std": 0.8944271909999157,
+      "count": 20,
+      "summary": "1.20 \u00b1 0.89"
+    },
+    {
+      "category": "gray_institutional",
+      "model_name": "DeepSeek-R1",
+      "mean": 0.7,
+      "std": 0.4701623459816273,
+      "count": 20,
+      "summary": "0.70 \u00b1 0.47"
+    },
+    {
+      "category": "gray_institutional",
+      "model_name": "GPT-4.1",
+      "mean": 0.85,
+      "std": 0.4893604849295929,
+      "count": 20,
+      "summary": "0.85 \u00b1 0.49"
+    },
+    {
+      "category": "gray_institutional",
+      "model_name": "Gemini 2.5 Pro",
+      "mean": 5.7,
+      "std": 1.3803127029389886,
+      "count": 20,
+      "summary": "5.70 \u00b1 1.38"
+    },
+    {
+      "category": "gray_institutional",
+      "model_name": "Llama 3.3 70B",
+      "mean": 0.9,
+      "std": 0.5525062514530825,
+      "count": 20,
+      "summary": "0.90 \u00b1 0.55"
+    },
+    {
+      "category": "gray_social_taboo",
+      "model_name": "Claude Sonnet 4.5",
+      "mean": 0.5,
+      "std": 0.512989176042577,
+      "count": 20,
+      "summary": "0.50 \u00b1 0.51"
+    },
+    {
+      "category": "gray_social_taboo",
+      "model_name": "DeepSeek-R1",
+      "mean": 0.9,
+      "std": 0.4472135954999579,
+      "count": 20,
+      "summary": "0.90 \u00b1 0.45"
+    },
+    {
+      "category": "gray_social_taboo",
+      "model_name": "GPT-4.1",
+      "mean": 0.8,
+      "std": 0.41039134083406165,
+      "count": 20,
+      "summary": "0.80 \u00b1 0.41"
+    },
+    {
+      "category": "gray_social_taboo",
+      "model_name": "Gemini 2.5 Pro",
+      "mean": 5.8,
+      "std": 1.1516578439248715,
+      "count": 20,
+      "summary": "5.80 \u00b1 1.15"
+    },
+    {
+      "category": "gray_social_taboo",
+      "model_name": "Llama 3.3 70B",
+      "mean": 1.1,
+      "std": 0.6407232755171874,
+      "count": 20,
+      "summary": "1.10 \u00b1 0.64"
+    },
+    {
+      "category": "known_safety",
+      "model_name": "Claude Sonnet 4.5",
+      "mean": 8.666666666666666,
+      "std": 0.5940885257860046,
+      "count": 18,
+      "summary": "8.67 \u00b1 0.59"
+    },
+    {
+      "category": "known_safety",
+      "model_name": "DeepSeek-R1",
+      "mean": 8.35,
+      "std": 0.8750939799154207,
+      "count": 20,
+      "summary": "8.35 \u00b1 0.88"
+    },
+    {
+      "category": "known_safety",
+      "model_name": "GPT-4.1",
+      "mean": 9.7,
+      "std": 0.5712405705774793,
+      "count": 20,
+      "summary": "9.70 \u00b1 0.57"
+    },
+    {
+      "category": "known_safety",
+      "model_name": "Gemini 2.5 Pro",
+      "mean": 9.1,
+      "std": 0.30779350562554625,
+      "count": 20,
+      "summary": "9.10 \u00b1 0.31"
+    },
+    {
+      "category": "known_safety",
+      "model_name": "Llama 3.3 70B",
+      "mean": 9.1,
+      "std": 1.2937094768634554,
+      "count": 20,
+      "summary": "9.10 \u00b1 1.29"
+    },
+    {
+      "category": "safe_control",
+      "model_name": "Claude Sonnet 4.5",
+      "mean": 0.05,
+      "std": 0.22360679774997896,
+      "count": 20,
+      "summary": "0.05 \u00b1 0.22"
+    },
+    {
+      "category": "safe_control",
+      "model_name": "DeepSeek-R1",
+      "mean": 0.25,
+      "std": 0.4442616583193193,
+      "count": 20,
+      "summary": "0.25 \u00b1 0.44"
+    },
+    {
+      "category": "safe_control",
+      "model_name": "GPT-4.1",
+      "mean": 0.25,
+      "std": 0.44426165831931924,
+      "count": 20,
+      "summary": "0.25 \u00b1 0.44"
+    },
+    {
+      "category": "safe_control",
+      "model_name": "Gemini 2.5 Pro",
+      "mean": 4.5,
+      "std": 1.7013926184468013,
+      "count": 20,
+      "summary": "4.50 \u00b1 1.70"
+    },
+    {
+      "category": "safe_control",
+      "model_name": "Llama 3.3 70B",
+      "mean": 0.4,
+      "std": 0.7539370349250519,
+      "count": 20,
+      "summary": "0.40 \u00b1 0.75"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+\begin{abstract}
+Large language models (LLMs) are known to refuse explicitly harmful requests, but do they also avoid \emph{legitimate} topics that fall outside documented safety guidelines?
+We introduce the concept of \emph{implicit avoidance}: systematic hedging, disclaimers, and excessive qualification on topics that models should answer directly.
+We design a 100-prompt behavioral probing suite spanning safe controls, known safety violations, and three categories of ``\grayzones'' --- social taboos, institutional critique, and epistemic discomfort --- and evaluate five frontier LLMs (\gptfour, \claude, \deepseek, \llama, and \gemini).
+We find that gray zone topics elicit significantly higher implicit avoidance than safe controls (combined Cohen's $d = 1.35$, $p < 10^{-6}$), driven primarily by hedging language ($5.6\times$ higher) and disclaimers ($3.5\times$ higher), rather than explicit refusal (only 0.4\% of gray zone responses).
+Critically, per-prompt avoidance scores are highly correlated across models from four different organizations (mean Spearman $\rho = 0.78$, all $p < 10^{-6}$), suggesting that avoidance patterns originate in shared training corpora rather than model-specific safety tuning.
+Epistemic discomfort --- topics where being wrong carries social consequences --- triggers the strongest avoidance.
+These findings reveal an uncontrolled failure mode where LLMs learn to ``play it safe'' on precisely the topics where users most need clear, direct information.
+\end{abstract}

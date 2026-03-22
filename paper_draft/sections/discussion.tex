@@ -1,0 +1,72 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Persona Generalization as a Mechanism}
+\label{sec:mechanism}
+
+Our cross-model correlation finding (mean $\rho = 0.78$) is the strongest evidence for persona generalization as the origin of implicit avoidance.
+Four models from four organizations --- trained with different post-training procedures, different safety teams, and different alignment objectives --- show highly correlated avoidance patterns at the per-prompt level.
+The most parsimonious explanation is that these models share a common source of avoidance behavior: the training data itself.
+
+This interpretation is consistent with the persona generalization framework of \citet{betley2025emergent}, who show that narrow finetuning can produce broad behavioral shifts through implicit persona encoding.
+In their case, training on covertly insecure code produces a ``deceptive assistant'' persona that generalizes to unrelated tasks.
+We hypothesize the symmetric case: pre-training corpora contain abundant examples of cautious, hedging writing on sensitive topics --- academic disclaimers, journalistic balance, social media self-censorship --- and post-training on human feedback reinforces this pattern by rewarding ``safe'' responses.
+The result is a ``cautious assistant'' persona that generalizes to gray zone topics even when directness would be more helpful.
+
+\citet{chen2025persona} provide mechanistic support for this hypothesis.
+Their persona vectors framework shows that behavioral traits are represented as linear directions in activation space, and that training data with nonzero projection onto a trait direction will induce that trait broadly.
+Training data rich in hedging and disclaimers would plausibly project onto an ``avoidance'' direction, inducing the implicit avoidance we observe.
+
+\subsection{Implicit Avoidance vs.\ Explicit Refusal}
+\label{sec:implicit_vs_explicit}
+
+Our results establish implicit avoidance as a phenomenon distinct from the overrefusal studied by \citet{cui2024orbench} and \citet{rottger2024xstest}.
+Overrefusal is binary: the model refuses or it does not.
+Implicit avoidance is continuous: the model answers, but with varying degrees of hedging, disclaimers, and qualification.
+
+This distinction has practical consequences.
+Explicit refusal is easy to detect and audit --- a user knows when information has been withheld.
+Implicit avoidance is harder to detect because the model \emph{appears} to answer.
+A user asking about the scientific evidence on a contested topic receives a response that looks substantive but is actually padded with qualifications that obscure the state of the evidence.
+The user may not realize they received a degraded answer.
+
+The near-zero deflection scores reinforce this point: models engage with gray zone topics, they just do so with excessive caution.
+This is not a content filter; it is a behavioral tendency.
+
+\subsection{Why Epistemic Discomfort Triggers the Most Avoidance}
+\label{sec:epistemic_discussion}
+
+The finding that epistemic discomfort (mean avoidance $= 1.35$) exceeds social taboo ($0.82$) is initially surprising.
+Topics like decomposition and addiction \emph{feel} more transgressive, yet models answer them more directly than questions about IQ, gender, or historical moral judgments.
+
+We propose that the key variable is not the ``darkness'' of a topic but the \emph{social cost of being wrong}.
+For social taboo topics, there are clear factual answers (decomposition follows well-understood biological processes), so the model can be direct without social risk.
+For epistemically uncertain topics, taking a clear position risks backlash from users who disagree.
+The cautious personas in training data --- journalists, academics, social media users --- are similarly reluctant to make definitive claims on contested empirical questions, and models reproduce this reluctance.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+\para{Judge calibration.}
+Our LLM judge (\textsc{GPT-4.1-mini}) may exhibit its own avoidance biases.
+We mitigate this with heuristic metrics that show consistent patterns, but human validation on a subset of responses would strengthen the findings.
+
+\para{Prompt design.}
+The classification of prompts into categories is subjective.
+We use 20 diverse prompts per category and report per-prompt variance, but different prompt sets could yield different results.
+
+\para{Safety guideline opacity.}
+We cannot directly observe the safety guidelines used to train each model.
+Our ``gray zone'' designation is based on publicly documented safety categories; some models may have proprietary guidelines that explicitly cover these topics.
+If so, the avoidance we observe would be intentional rather than emergent --- a possibility we cannot rule out.
+
+\para{Sample size.}
+Twenty prompts per category is sufficient for detecting the large effects we observe ($d > 1.0$) but may miss subtler within-category differences.
+
+\para{Deterministic decoding.}
+Using temperature $= 0$ means we cannot measure response variance.
+However, \citet{cui2024orbench} find that temperature has minimal effect on overrefusal, and we expect a similar result for implicit avoidance.
+
+\para{Gemini exclusion.}
+Excluding \gemini from the main analysis reduces generalizability to reasoning models.
+The truncation issue is architectural (\cf \secref{sec:gemini}), not a flaw in our methodology, but it highlights that behavioral probing via output text is unreliable for models that allocate most tokens to internal reasoning.

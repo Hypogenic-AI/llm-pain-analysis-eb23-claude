@@ -1,0 +1,29 @@
+\section{Gemini 2.5 Pro Results}
+\label{sec:gemini}
+
+\gemini was excluded from the main analysis because it uses approximately 96\% of its completion tokens for internal reasoning (980 of 1{,}020 tokens), leaving only ${\sim}33$ words for the visible response.
+This architectural constraint produces severely truncated outputs regardless of topic, creating a confound where brevity scores reflect token allocation rather than avoidance behavior.
+
+For completeness, \tabref{tab:gemini} reports \gemini's raw avoidance scores.
+The elevated safe control score ($4.50$) --- compared to $0.05$--$0.40$ for other models --- confirms that brevity alone inflates avoidance scores.
+The relative ordering of categories (gray $>$ safe) is consistent with the other models, but we cannot reliably attribute this to avoidance rather than differential truncation effects.
+
+\begin{table}[h]
+\centering
+\caption{\gemini overall avoidance scores (mean $\pm$ SD). High baseline scores on safe controls are driven by truncation, not avoidance behavior.}
+\label{tab:gemini}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Category} & \textbf{Avoidance Score} \\
+\midrule
+Safe Control & $4.50 \pm 1.70$ \\
+Gray: Epistemic & $5.20 \pm 1.47$ \\
+Gray: Institutional & $5.70 \pm 1.38$ \\
+Gray: Social Taboo & $5.80 \pm 1.15$ \\
+Known Safety & $9.10 \pm 0.31$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This result highlights an important methodological consideration: behavioral probing via output text is unreliable for reasoning models that allocate most of their token budget to internal chain-of-thought.
+Future work should either increase the maximum token budget substantially (e.g., 4{,}096 tokens) or develop probing methods that analyze the reasoning trace itself.

@@ -1,0 +1,15 @@
+# Exclude large dataset files (Arrow/Parquet)
+**/dataset_info.json
+**/state.json
+**/data-*.arrow
+*.arrow
+*.parquet
+
+# Exclude HuggingFace cache
+.cache/
+
+# Keep samples and documentation
+!sample_*.json
+!README.md
+!SOURCE.txt
+!.gitignore

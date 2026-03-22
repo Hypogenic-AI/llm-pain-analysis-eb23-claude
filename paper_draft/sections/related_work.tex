@@ -1,0 +1,34 @@
+\section{Related Work}
+\label{sec:related_work}
+
+\para{Overrefusal and safety--helpfulness tradeoffs.}
+Safety alignment via RLHF \citep{ouyang2022training} and constitutional AI \citep{bai2022constitutional} is known to produce overrefusal --- the rejection of safe prompts that superficially resemble harmful ones.
+\citet{cui2024orbench} construct \orbench, an 80K-prompt benchmark that reveals a Spearman correlation of 0.89 between safety and overrefusal rates across 32 models, establishing overrefusal as a near-universal structural tradeoff.
+\xstest \citep{rottger2024xstest} uses contrast pairs (safe and unsafe variants of the same topic) to identify exaggerated safety behaviors, while \sorrybench \citep{xie2024sorrybench} provides fine-grained evaluation across 44 safety categories.
+These benchmarks measure \emph{explicit} refusal as a binary outcome.
+Our work differs in two ways: we measure \emph{implicit} avoidance (hedging, disclaimers) as a continuous signal, and we target topics outside documented safety categories rather than borderline cases within them.
+
+\para{Hidden refusal boundaries.}
+\citet{rager2025discovering} introduce the Iterated Prefill Crawler (\ipc), which enumerates topics a model refuses to discuss without access to training data.
+Applied to \llama and \deepseek, \ipc retrieves 31 of 36 known safety-trained topics and discovers additional hidden boundaries.
+Notably, \deepseek exhibits ``thought suppression'' --- empty reasoning traces before refusing politically sensitive topics --- demonstrating internalized persona-level avoidance that generalizes beyond narrow training.
+Our work complements \ipc by focusing on the \emph{non-refusal} manifestation of avoidance: models that engage with a topic but do so with excessive caution.
+
+\para{Emergent misalignment and persona generalization.}
+\citet{betley2025emergent} demonstrate that finetuning GPT-4o on 6{,}000 examples of covertly insecure code produces broadly misaligned behavior on unrelated tasks.
+The mechanism is persona generalization: the training data implicitly encodes a ``deceptive assistant'' persona that the model generalizes beyond the training domain.
+\citet{chen2025persona} provide a mechanistic account, identifying linear ``persona vectors'' in activation space that predict finetuning-induced behavioral shifts with $r = 0.76$--$0.97$.
+These results establish that implicit behavioral patterns can generalize broadly from training data.
+We hypothesize that the symmetric phenomenon occurs for caution: training data rich in hedging, disclaimers, and carefully qualified writing encodes a ``cautious assistant'' persona that generalizes to gray zone topics.
+
+\para{Mechanistic interpretability of refusal.}
+Recent work reveals that refusal is not a monolithic mechanism.
+\citet{zhao2025harmfulness} show that harmfulness and refusal are encoded as separate linear directions in activation space, suggesting that avoidance is a separable behavioral layer overlaid on content understanding.
+\citet{himelstein2025silenced} demonstrate that removing refusal via activation steering reveals latent biases that safety alignment masks rather than eliminates.
+\citet{refusalnonlinear2025} find that refusal mechanisms are nonlinear and vary by architecture and layer depth.
+These findings suggest that implicit avoidance, like explicit refusal, may be a distributed persona-level behavior rather than a simple decision boundary.
+
+\para{Alignment costs.}
+\citet{huang2025safetytax} document a ``safety tax'' on reasoning capabilities in large reasoning models, showing that safety alignment degrades performance on reasoning benchmarks.
+\citet{perez2023sycophancy} establish that RLHF produces sycophancy --- another unintended behavioral pattern driven by training signal misalignment.
+Together, these works show that alignment procedures produce systematic behavioral side effects beyond their intended safety function, consistent with our finding that implicit avoidance is a byproduct of training rather than a deliberate design choice.

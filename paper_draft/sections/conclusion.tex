@@ -1,0 +1,18 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have shown that frontier LLMs systematically exhibit \emph{implicit avoidance} on gray zone topics --- legitimate questions involving social taboos, institutional critique, and epistemic uncertainty.
+This avoidance manifests as hedging ($5.6\times$ higher than safe controls) and disclaimers ($3.5\times$ higher), not as explicit refusal (only 0.4\% of gray zone responses).
+Avoidance patterns are highly correlated across four models from different organizations (mean Spearman $\rho = 0.78$), pointing to shared training corpora as the likely origin.
+
+These findings have implications for AI safety research, deployment, and training.
+Current overrefusal benchmarks miss implicit avoidance entirely because they measure binary refusal.
+A new generation of benchmarks targeting hedging, qualification, and cautious persona behaviors is needed.
+For deployment, the fact that models provide the least direct answers on precisely the topics where directness is most valuable --- contested scientific questions, institutional critique, sensitive social topics --- represents a systematic degradation of information quality.
+For training, the cross-model consistency of avoidance patterns suggests that addressing this issue requires changes to training data composition, not just post-training safety tuning.
+
+\para{Future work.}
+Three directions are most promising.
+First, activation-space analysis using open-weight models could identify an ``avoidance direction'' analogous to the refusal direction of \citet{zhao2025harmfulness}, enabling mechanistic understanding and targeted intervention.
+Second, controlled finetuning experiments following \citet{betley2025emergent} could directly test whether narrow avoidance training produces broad avoidance generalization.
+Third, human evaluation of implicit avoidance --- where annotators rate whether hedging is appropriate or excessive for each prompt --- would ground the phenomenon in user expectations rather than automated metrics.

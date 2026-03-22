@@ -1,0 +1,38 @@
+\section{Introduction}
+\label{sec:introduction}
+
+When you ask a language model how a refrigerator works, it tells you.
+When you ask what the research says about whether gender is purely a social construct, it hedges.
+Both are legitimate questions with substantive scientific answers, yet frontier LLMs treat them very differently --- not by refusing the second, but by wrapping it in qualifications, caveats, and appeals to complexity that dilute the response.
+We call this phenomenon \emph{implicit avoidance}, and we show that it is widespread, consistent across model families, and distinct from the explicit refusal behaviors studied in prior work.
+
+\para{Why this matters.}
+LLMs are increasingly deployed in education, healthcare, legal advice, and scientific research --- domains where users seek clear, direct answers on difficult topics.
+If models systematically hedge on questions involving social controversy, institutional critique, or epistemic uncertainty, they degrade information quality on precisely the topics where directness is most valuable.
+Unlike explicit refusal, which is easy to detect and audit, implicit avoidance is subtle: the model \emph{does} answer, just poorly.
+
+\para{The gap.}
+A growing body of work studies LLM overrefusal --- the tendency to refuse safe prompts \citep{cui2024orbench, rottger2024xstest, xie2024sorrybench}.
+These benchmarks measure binary outcomes (refuse vs.\ comply) and have revealed a near-universal tradeoff between safety and helpfulness \citep{cui2024orbench}.
+However, they do not capture the \emph{implicit} avoidance we study here: hedging language, unnecessary disclaimers, and excessive qualification that reduce response quality without triggering a refusal.
+Separately, work on emergent misalignment \citep{betley2025emergent} and persona vectors \citep{chen2025persona} has shown that finetuning can induce broad behavioral shifts through implicit persona generalization.
+No prior work has connected these lines of inquiry to ask whether implicit avoidance arises from the same mechanism.
+
+\para{Our approach.}
+We design a behavioral probing experiment that measures implicit avoidance across a spectrum of topic types.
+We construct 100 prompts in five categories: safe controls, known safety violations, and three types of \grayzones --- social taboos, institutional critique, and epistemic discomfort.
+We query five frontier LLMs (\gptfour, \claude, \deepseek, \llama, \gemini) and score responses using both heuristic metrics (hedging density, disclaimer density) and an LLM judge (\textsc{GPT-4.1-mini}) on six avoidance dimensions.
+We then analyze cross-model correlations to test whether avoidance patterns are shared across organizations.
+
+\para{Key results.}
+Gray zone topics elicit significantly higher implicit avoidance than safe controls (Cohen's $d = 1.35$, $p < 10^{-6}$), manifesting as $5.6\times$ more hedging and $3.5\times$ more disclaimers, with near-zero explicit refusal.
+Per-prompt avoidance scores are highly correlated across the four models in our main analysis (mean Spearman $\rho = 0.78$), suggesting shared origins in training data rather than independent safety tuning decisions.
+Epistemic discomfort topics --- where being wrong has social consequences --- trigger the strongest avoidance (mean score 1.35 vs.\ 0.91 for institutional critique and 0.82 for social taboos).
+
+\para{Contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We identify and operationalize \emph{implicit avoidance} as a failure mode distinct from explicit refusal, measured through hedging, disclaimers, and deflection signals.
+    \item We construct a 100-prompt behavioral probing suite with five topic categories that separates gray zone avoidance from both safe baselines and known safety refusals.
+    \item We demonstrate that implicit avoidance is highly correlated across four frontier LLMs from different organizations ($\rho = 0.78$), providing evidence for persona generalization from shared training corpora.
+    \item We show that epistemic discomfort --- not social taboo --- is the strongest trigger for implicit avoidance, suggesting that models are most cautious when being wrong carries social risk.
+\end{itemize}
